@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="sv"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Storumans IK – Sammandrag 22 november 2025</title>
+<style>
+
+  @page { size: A4 landscape; margin: 12mm; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial; color: #111; background:#fff; }
+
+  :root {
+    --teg-red: #731919;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #ffffff;
+    --spol: #f0f2f5;
+  }
+
+  .page { page-break-after: always; padding: 12px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .header { text-align: center; padding: 16px 0 10px; }
+  .crest { height: 42px; display: block; margin: 0 auto 8px; }
+  .title { font-weight: 400; font-size: 25px; color: var(--teg-red); margin: 0; }
+  .meta { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+  .divider { height: 2px; background: linear-gradient(90deg, transparent, var(--teg-red), transparent); margin: 10px 0 14px; opacity: .8; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; background: var(--bg); border: 1px solid var(--border); }
+  thead th { background: var(--teg-red); color: #fff; font-weight: 400; text-transform: uppercase; font-size: 16px; letter-spacing: .4px; padding: 10px 8px; text-align: center; }
+  tbody td { border-top: 1px solid var(--border); padding: 10px 8px; vertical-align: middle; }
+  .row.spolning td { background: var(--spol); color: var(--muted); font-weight: 700; text-align: center; }
+
+  .match { display: grid; grid-template-columns: 1fr min-content 1fr; align-items: center; column-gap: 16px; }
+  .team { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .team-left { justify-content: flex-end; }
+  .team-right { justify-content: flex-start; }
+  .logo-box { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 28px; }
+  .logo { max-height: 24px; max-width: 24px; display: block; object-fit: contain; }
+  .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
+  .dash { display: inline-block; font-weight: 400; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+  table.plan-onecol thead th.plan { text-align:center; }
+  table.plan-onecol col { width: auto; }
+  table.plan-onecol td.vs.center { text-align: center; }
+
+  .team-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg); }
+  .team-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: #f0f2f5;
+    color: #111111;
+    padding: 10px 12px;
+    font-weight: 700;
+  }
+  .team-body thead th { background: #fff; color: var(--muted); border-bottom: 1px solid var(--border); text-transform: none; font-size: 12px; text-align: center; }
+  .team-body tbody td { border-top: 1px solid var(--border); }
+  .team-body tbody td.t { text-align: center; }
+  .team-body tbody td.p { text-align: center; }
+  .team-body tbody td.opp { text-align: center; }
+  .opp-wrap { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+  .opp-name { white-space: nowrap; }
+
+  .per-team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 1200px) { .per-team-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 900px) { .per-team-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .per-team-grid { grid-template-columns: 1fr; } }
+
+  .footer { margin-top: 14px; text-align: center; font-size: 12px; color: #fff; }
+
+</style>
+<style>
+
+/* v2025-10-28 v2: filters row split, crest ratio, no-italic no-match, accordion mobile, font refinements */
+.filters{ display:block; margin:6px 0 12px }
+.filters-top{ display:flex; justify-content:center; margin-bottom:8px }
+.filters-main{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center }
+.filters button{ border:1px solid #e5e7eb; padding:8px 14px; border-radius:999px; background:#fff; font-size:clamp(13px, 2vw, 14px); min-height:44px }
+.filters button[aria-pressed="true"]{ background:#731919; color:#fff; border-color:#731919 }
+:focus-visible{ outline:3px solid #111; outline-offset:2px }
+
+/* Crest must keep aspect ratio */
+.crest{ height:48px; width:auto; }
+
+/* Non-italic no-match */
+.no-match, .no-match * { font-style: normal !important; }
+
+/* Mobile accordion for team cards */
+@media (max-width:600px){
+  .team-head{ cursor:pointer }
+  .team-body{ display:none }
+  .team-card[aria-expanded="true"] .team-body{ display:block }
+}
+
+/* Typography (fonts-v2) */
+:root {
+  --fs-body: clamp(15px, 2.4vw, 16px);
+  --fs-head: clamp(14px, 1.8vw, 16px);
+  --fs-chip: clamp(13px, 2vw, 14px);
+  --fs-meta: clamp(12px, 2vw, 12px);
+}
+table { font-size: var(--fs-body); }
+thead th { font-size: var(--fs-head); font-weight: 400; }
+.match .name { font-size: clamp(15px, 2.6vw, 16px); font-weight: 500; }
+.match .t    { font-size: clamp(15px, 2.6vw, 16px); font-weight: 600; }
+.dash        { font-size: clamp(11px, 2vw, 12px); }
+.meta, .subtitle { font-size: var(--fs-meta); }
+
+@media (min-width: 900px) {
+  table { font-size: 14px; }
+}
+@media print {
+  table { font-size: 13.5px; }
+  thead th { font-size: 14px; font-weight: 400; }
+}
+
+</style>
+<style>.filters { display:none !important; }</style><style id="print-p1-tight">
+
+@page { size: A4 landscape; margin: 12mm; }
+
+@media print {
+  html, body { margin:0 !important; padding:0 !important; background:#fff !important; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Keep container centered */
+  .container { max-width: 1200px !important; margin-left:auto !important; margin-right:auto !important; }
+
+  /* Exactly 2 pages: 1 section per page */
+  section.page { page-break-after: always !important; break-inside: avoid !important; }
+
+  /* --- PAGE 1: SPELSCHEMA must fit under header --- */
+  /* Header compacting (very light, visual look preserved) */
+  section.page:first-of-type .header { padding: 12px 0 8px !important; }
+  section.page:first-of-type .crest  { height: 38px !important; }
+  section.page:first-of-type .title  { font-size: 24px !important; }
+  section.page:first-of-type .meta   { font-size: 11px !important; margin-top: 4px !important; }
+  section.page:first-of-type .divider{ margin: 8px 0 10px !important; }
+
+  /* Force two columns in print regardless of viewport calc */
+  section.page:first-of-type .grid {
+    display: grid !important;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+    gap: 12px !important;
+    break-inside: avoid !important;
+  }
+
+  /* Minimal compaction in tables so all rows fit on page 1 */
+  section.page:first-of-type table { font-size: 12.1px !important; }
+  section.page:first-of-type thead th { font-size: 12.6px !important; padding: 6px 6px !important; }
+  section.page:first-of-type tbody td { padding: 6px 6px !important; }
+  section.page:first-of-type .match { column-gap: 12px !important; }
+  section.page:first-of-type .logo-box { width: 22px !important; height: 22px !important; }
+  section.page:first-of-type .logo { max-width: 20px !important; max-height: 20px !important; }
+  section.page:first-of-type .dash { font-size: 10px !important; letter-spacing: .6px !important; }
+  section.page:first-of-type .row.spolning td { padding-top: 4px !important; padding-bottom: 4px !important; }
+
+  /* Prevent the schedule tables from splitting */
+  section.page:first-of-type table { break-inside: avoid !important; }
+
+  /* --- PAGE 2: LAGSCHEMAN stay on a single page --- */
+  section.page:nth-of-type(2) .per-team-grid {
+    display: grid !important; grid-template-columns: repeat(3, minmax(0,1fr)) !important; gap: 16px !important;
+  }
+  section.page:nth-of-type(2) .team-card { break-inside: avoid !important; }
+  section.page:nth-of-type(2) .team-body thead th { font-size: 12px !important; padding: 6px !important; }
+  section.page:nth-of-type(2) .team-body tbody td { font-size: 11.8px !important; padding: 5px 6px !important; }
+
+  /* --- PAGE 3: MÅLVAKTSSCHEMAN – force three cards per row in print --- */
+  section.page:nth-of-type(3) .per-team-grid {
+    display: grid !important; grid-template-columns: repeat(3, minmax(0,1fr)) !important; gap: 16px !important;
+  }
+  section.page:nth-of-type(3) .team-card { break-inside: avoid !important; }
+  section.page:nth-of-type(3) .team-body thead th { font-size: 12px !important; padding: 6px !important; }
+  section.page:nth-of-type(3) .team-body tbody td { font-size: 11.8px !important; padding: 5px 6px !important; }
+
+  /* Hide filters in print */
+  .filters { display:none !important; }
+}
+
+</style>
+</head>
+<body>
+<section class="page">
+<div class="container">
+<header class="header">
+<img alt="Tegs SK" class="crest" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png">
+<h1 class="title">SPELSCHEMA</h1>
+<p class="meta">Storumans IK • 22 november 2025 • Vildmannahallen • 10:00–15:20</p>
+<div class="divider"></div>
+</header>
+<nav aria-label="Filter" class="filters">
+<div class="filters-top">
+<button aria-pressed="true" data-clear="" type="button">Alla</button>
+</div>
+<div class="filters-main"><button type="button" data-filter-assoc="Storuman" aria-pressed="false">Storuman</button><button type="button" data-filter-assoc="Teg" aria-pressed="false">Teg</button><button type="button" data-filter-assoc="Vindelns HF" aria-pressed="false">Vindelns HF</button></div>
+</nav>
+<div class="grid">
+<table aria-label="Plan 1 – matchschema" class="plan-onecol">
+<colgroup><col></colgroup>
+<thead><tr><th class="plan">PLAN 1</th></tr></thead>
+<tbody><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 4</span><span class="logo-box"><img alt="Teg SK 4" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">10:00</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 3</span></div></div></td></tr><tr class="row" data-assocs="Storuman, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Storuman IK 2</span><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span></div><span class="dash">10:25</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 1</span></div></div></td></tr><tr class="row" data-assocs="Storuman, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Storuman IK 1</span><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span></div><span class="dash">10:50</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 2</span></div></div></td></tr><tr class="row" data-assocs="Teg, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 2</span><span class="logo-box"><img alt="Teg SK 2" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">11:15</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 1</span></div></div></td></tr><tr class="row spolning" data-assocs=""><td class="vs">– Spolning –</td></tr><tr class="row" data-assocs="Storuman, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Storuman IK 3</span><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span></div><span class="dash">12:05</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 1</span></div></div></td></tr><tr class="row" data-assocs="Teg, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 3</span><span class="logo-box"><img alt="Teg SK 3" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">12:30</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 2</span></div></div></td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 2</span><span class="logo-box"><img alt="Teg SK 2" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">12:55</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 3</span></div></div></td></tr><tr class="row" data-assocs="Teg, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 1</span><span class="logo-box"><img alt="Teg SK 1" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">13:20</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 2</span></div></div></td></tr><tr class="row spolning" data-assocs=""><td class="vs">– Spolning –</td></tr><tr class="row" data-assocs="Vindelns HF, Teg"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Vindelns HF 1</span><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span></div><span class="dash">14:10</span><div class="team team-right"><span class="logo-box"><img alt="Teg SK 3" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span><span class="name">Teg SK 3</span></div></div></td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 3</span><span class="logo-box"><img alt="Teg SK 3" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">14:35</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 3</span></div></div></td></tr><tr class="row" data-assocs="Teg, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 4</span><span class="logo-box"><img alt="Teg SK 4" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">15:00</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 1</span></div></div></td></tr></tbody>
+</table>
+<table aria-label="Plan 2 – matchschema" class="plan-onecol">
+<colgroup><col></colgroup>
+<thead><tr><th class="plan">PLAN 2</th></tr></thead>
+<tbody><tr class="row" data-assocs="Storuman, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Storuman IK 1</span><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span></div><span class="dash">10:00</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 2</span></div></div></td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 1</span><span class="logo-box"><img alt="Teg SK 1" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">10:25</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 3</span></div></div></td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 3</span><span class="logo-box"><img alt="Teg SK 3" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">10:50</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 2</span></div></div></td></tr><tr class="row" data-assocs="Teg, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 4</span><span class="logo-box"><img alt="Teg SK 4" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">11:15</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 2</span></div></div></td></tr><tr class="row spolning" data-assocs=""><td class="vs">– Spolning –</td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 1</span><span class="logo-box"><img alt="Teg SK 1" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">12:05</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 1</span></div></div></td></tr><tr class="row" data-assocs="Storuman, Vindelns HF"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Storuman IK 2</span><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span></div><span class="dash">12:30</span><div class="team team-right"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="name">Vindelns HF 1</span></div></div></td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 4</span><span class="logo-box"><img alt="Teg SK 4" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">12:55</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 1</span></div></div></td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 2</span><span class="logo-box"><img alt="Teg SK 2" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">13:20</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 2</span></div></div></td></tr><tr class="row spolning" data-assocs=""><td class="vs">– Spolning –</td></tr><tr class="row" data-assocs="Teg, Storuman"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Teg SK 2</span><span class="logo-box"><img alt="Teg SK 2" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span></div><span class="dash">14:10</span><div class="team team-right"><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="name">Storuman IK 1</span></div></div></td></tr><tr class="row" data-assocs="Storuman, Teg"><td class="vs"><div class="match"><div class="team team-left"><span class="name">Storuman IK 2</span><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span></div><span class="dash">14:35</span><div class="team team-right"><span class="logo-box"><img alt="Teg SK 1" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span><span class="name">Teg SK 1</span></div></div></td></tr></tbody>
+</table>
+</div>
+<p class="footer">Officiell version – uppdaterad 2025-11-20</p>
+</div>
+</section>
+<section class="page">
+<div class="container">
+<header class="header">
+<h2 class="title" style="color:var(--teg-red); font-size:25px; font-weight:400;">LAGSCHEMAN</h2>
+<p class="meta">Individuella scheman per lag</p>
+<div class="divider"></div>
+</header>
+<div class="per-team-grid"><section class="team-card" aria-expanded="true"><div class="team-head" role="button" tabindex="0"><span class="logo-box"><img alt="Teg SK 1" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span>Teg SK 1</div><div class="team-body"><table><colgroup><col style="width:78px"><col style="width:70px"><col style="width:auto"><col style="width:40px"></colgroup><thead><tr><th class="t">Tid</th><th class="p">Plan</th><th class="opp">Motstånd</th><th class="p">MV</th></tr></thead><tbody><tr><td class="t">10:25</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 3</span></div></td><td class="p">M</td></tr><tr><td class="t">12:05</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 1</span></div></td><td class="p">K</td></tr><tr><td class="t">13:20</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="opp-name">Vindelns HF 2</span></div></td><td class="p">K</td></tr><tr><td class="t">14:35</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 2</span></div></td><td class="p">H</td></tr></tbody></table></div></section><section class="team-card" aria-expanded="false"><div class="team-head" role="button" tabindex="0"><span class="logo-box"><img alt="Teg SK 2" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span>Teg SK 2</div><div class="team-body"><table><colgroup><col style="width:78px"><col style="width:70px"><col style="width:auto"><col style="width:40px"></colgroup><thead><tr><th class="t">Tid</th><th class="p">Plan</th><th class="opp">Motstånd</th><th class="p">MV</th></tr></thead><tbody><tr><td class="t">11:15</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="opp-name">Vindelns HF 1</span></div></td><td class="p">K</td></tr><tr><td class="t">12:55</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 3</span></div></td><td class="p">K</td></tr><tr><td class="t">13:20</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 2</span></div></td><td class="p">M</td></tr><tr><td class="t">14:10</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 1</span></div></td><td class="p">H</td></tr></tbody></table></div></section><section class="team-card" aria-expanded="false"><div class="team-head" role="button" tabindex="0"><span class="logo-box"><img alt="Teg SK 3" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span>Teg SK 3</div><div class="team-body"><table><colgroup><col style="width:78px"><col style="width:70px"><col style="width:auto"><col style="width:40px"></colgroup><thead><tr><th class="t">Tid</th><th class="p">Plan</th><th class="opp">Motstånd</th><th class="p">MV</th></tr></thead><tbody><tr><td class="t">10:50</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 2" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 2</span></div></td><td class="p">H</td></tr><tr><td class="t">12:30</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="opp-name">Vindelns HF 2</span></div></td><td class="p">M</td></tr><tr><td class="t">14:10</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="opp-name">Vindelns HF 1</span></div></td><td class="p">K</td></tr><tr><td class="t">14:35</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 3</span></div></td><td class="p">M</td></tr></tbody></table></div></section><section class="team-card" aria-expanded="false"><div class="team-head" role="button" tabindex="0"><span class="logo-box"><img alt="Teg SK 4" class="logo" src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" width="24" height="24"></span>Teg SK 4</div><div class="team-body"><table><colgroup><col style="width:78px"><col style="width:70px"><col style="width:auto"><col style="width:40px"></colgroup><thead><tr><th class="t">Tid</th><th class="p">Plan</th><th class="opp">Motstånd</th><th class="p">MV</th></tr></thead><tbody><tr><td class="t">10:00</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 3" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 3</span></div></td><td class="p">K</td></tr><tr><td class="t">11:15</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Vindelns HF 2" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="opp-name">Vindelns HF 2</span></div></td><td class="p">M</td></tr><tr><td class="t">12:55</td><td class="p">Plan 2</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Storuman IK 1" class="logo" src="https://storumansik.nu/wp-content/uploads/2022/11/cropped-favicon_sik.png" width="24" height="24"></span><span class="opp-name">Storuman IK 1</span></div></td><td class="p">H</td></tr><tr><td class="t">15:00</td><td class="p">Plan 1</td><td class="opp"><div class="opp-wrap"><span class="logo-box"><img alt="Vindelns HF 1" class="logo" src="https://files.eliteprospects.com/layout/logos/76e94ede-8d41-4936-a686-e297614ef336_medium.png" width="24" height="24"></span><span class="opp-name">Vindelns HF 1</span></div></td><td class="p">M</td></tr></tbody></table></div></section></div></div></section>
+  
+<script>
+(function(){
+  function qs(a, b){ return (b||document).querySelector(a); }
+  function qsa(a, b){ return Array.prototype.slice.call((b||document).querySelectorAll(a)); }
+
+  // Association mapping from visual names
+  function assocOf(raw){
+    if(!raw) return '';
+    var n = raw.trim().replace(/\s{2,}/g,' ');
+    n = n.replace(/\s*[- ]\s*\d+\s*$/, '');       // drop trailing numbers
+    // remove org suffix from end for label, but keep brand core
+    n = n.replace(/\s+(IK|HC|SK)\b/i, '');
+    if(/^Tegs\s+SK\b/i.test(raw) || /^Teg\b/i.test(raw)) return 'Teg';
+    if(/^(MODO|MoDo|Modo)\b/.test(n)) n = 'MoDo';
+    return n.trim();
+  }
+
+  // Collect rows & set data-assocs
+  var rows = qsa('tbody tr.row');
+  rows.forEach(function(r){
+    var names = qsa('.match .name', r).map(function(el){ return (el.textContent||'').trim(); });
+    var assocs = [];
+    names.forEach(function(n){
+      var a = assocOf(n);
+      if(a && assocs.indexOf(a) === -1) assocs.push(a);
+    });
+    r.dataset.assocs = assocs.join(', ');
+  });
+
+  // Build chips in .filters-main, keep "Alla" in .filters-top
+  var filtersMain = qs('.filters-main') || qs('.filters');
+  if(filtersMain){
+    var set = new Set();
+    rows.forEach(function(r){
+      (r.dataset.assocs||'').split(',').forEach(function(a){
+        a = a.trim(); if(a) set.add(a);
+      });
+    });
+    Array.from(set).sort().forEach(function(label){
+      var b = document.createElement('button');
+      b.type='button'; b.textContent = label; b.dataset.filterAssoc = label; b.setAttribute('aria-pressed','false');
+      filtersMain.appendChild(b);
+    });
+  }
+
+  var activeAssoc = null;
+  function applyFilters(){
+    rows.forEach(function(r){
+      if(!activeAssoc){ r.hidden = false; return; }
+      var as = (r.dataset.assocs || '');
+      r.hidden = as.indexOf(activeAssoc) === -1;
+    });
+    // live status (optional)
+    var status = qs('#filter-status');
+    if(status){
+      var visible = rows.filter(function(r){ return !r.hidden; }).length;
+      status.textContent = activeAssoc ? ('Visar ' + visible + ' matcher för ' + activeAssoc + '.') : ('Visar alla ' + visible + ' matcher.');
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if(!(el instanceof HTMLElement)) return;
+    if(el.matches('[data-clear]')){
+      activeAssoc = null;
+      qsa('.filters button[aria-pressed]').forEach(function(b){ b.setAttribute('aria-pressed', b.hasAttribute('data-clear') ? 'true' : 'false'); });
+      applyFilters();
+    }
+    if(el.matches('[data-filter-assoc]')){
+      var name = el.dataset.filterAssoc;
+      var now = el.getAttribute('aria-pressed') === 'true' ? null : name;
+      activeAssoc = now;
+      qsa('[data-filter-assoc]').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+      el.setAttribute('aria-pressed', String(Boolean(now)));
+      var clear = qs('[data-clear]'); if(clear) clear.setAttribute('aria-pressed', String(!now));
+      applyFilters();
+    }
+  });
+
+  // Mobile accordion: open first by default
+  (function(){
+    var cards = qsa('.team-card');
+    if(!cards.length) return;
+    cards.forEach(function(card, idx){
+      var head = qs('.team-head', card);
+      var body = qs('.team-body', card) || qs('table', card);
+      if(!head || !body) return;
+      card.setAttribute('aria-expanded', idx === 0 ? 'true' : 'false');
+      head.setAttribute('role','button'); head.setAttribute('tabindex','0');
+      head.addEventListener('click', function(){
+        var open = card.getAttribute('aria-expanded') === 'true';
+        card.setAttribute('aria-expanded', String(!open));
+      });
+      head.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); head.click(); }
+      });
+    });
+  })();
+
+  // Non-italic no-match tagging
+  qsa('td, th').forEach(function(cell){
+    if(/—\s*Ingen match\s*—/.test(cell.textContent||'')){
+      cell.classList.add('no-match');
+    }
+  });
+
+  // Image hints and crest proportions
+  qsa('img').forEach(function(img){
+    if(!img.getAttribute('width')) img.setAttribute('width','24');
+    if(!img.getAttribute('height')) img.setAttribute('height','24');
+    if(img.classList.contains('crest')){ img.removeAttribute('width'); img.removeAttribute('height'); }
+    if(!img.loading) img.loading = 'lazy';
+    if(!img.decoding) img.decoding = 'async';
+  });
+
+  // Optional: filter status region
+  if(!qs('#filter-status')){
+    var s = document.createElement('div');
+    s.id = 'filter-status';
+    s.setAttribute('aria-live','polite');
+    s.style.position='absolute'; s.style.width='1px'; s.style.height='1px'; s.style.overflow='hidden'; s.style.clip='rect(0,0,0,0)';
+    document.body.appendChild(s);
+  }
+  applyFilters();
+})();
+</script><div id="filter-status" aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px);">Visar alla 25 matcher.</div>
+
+
+</body></html>
