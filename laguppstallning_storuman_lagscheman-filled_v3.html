@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Laguppställningar – Teg • Sammandrag Storuman 22 november 2025</title>
+  <style>
+    @page { size: A4 landscape; margin: 12mm; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #111; background: #fff;
+    }
+    :root { --teg-red:#731919; --muted:#6b7280; --border:#e5e7eb; --bg:#fff; }
+
+    .page{padding:12px;}
+    .container{max-width:1200px;margin:0 auto;}
+
+    .header{text-align:center;padding:16px 0 10px;}
+    .crest{height:42px;margin:0 auto 8px;display:block;}
+    .title{font-weight:400;font-size:25px;color:var(--teg-red);margin:0;}
+    .meta{margin:6px 0 0;color:var(--muted);font-size:12px;}
+    .divider{height:2px;background:linear-gradient(90deg,transparent,var(--teg-red),transparent);margin:10px 0 14px;opacity:.8;}
+
+    .per-team-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+    @media(max-width:1024px){
+      .per-team-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:640px){
+      .per-team-grid{grid-template-columns:1fr;}
+    }
+
+    details.team-accordion{
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:var(--bg);
+      overflow:hidden;
+    }
+    summary{list-style:none;cursor:pointer;}
+    summary::-webkit-details-marker{display:none;}
+
+    .team-head{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      background:#f0f2f5;
+      color:#111;
+      padding:10px 12px;
+      font-weight:700;
+      position:relative;
+    }
+    .logo-box{
+      width:28px;
+      height:28px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 28px;
+    }
+    .logo{
+      max-height:24px;
+      max-width:24px;
+      display:block;
+      object-fit:contain;
+    }
+    @media(max-width:768px){
+      .team-head::after{
+        content:'▾';
+        position:absolute;
+        right:10px;
+        font-size:12px;
+        color:var(--muted);
+      }
+      details[open] .team-head::after{content:'▴';}
+    }
+
+    .team-body{padding:10px;}
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    h3.subtitle{
+      margin:4px 0;
+      font-size:13px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+      color:var(--muted);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+      table-layout:fixed;
+      border:none;
+    }
+    td{
+      border:none;
+      padding:3px 0;
+      font-size:13px;
+    }
+
+    @media print{
+      body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      .page{page-break-after:always;}
+      .per-team-grid{grid-template-columns:repeat(4,1fr);gap:12px;}
+      table{font-size:12.5px;}
+      td{padding:3px 0;}
+    }
+  </style>
+</head>
+<body>
+<section class="page">
+  <div class="container">
+    <header class="header">
+      <img src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" class="crest" alt="Tegs SK"/>
+      <h1 class="title">LAGUPPSTÄLLNINGAR</h1>
+      <p class="meta">Storuman • Vildmannahallen • 22 november 2025</p>
+      <div class="divider"></div>
+    </header>
+
+    <div class="per-team-grid">
+
+      <!-- TEG 1 -->
+      <details class="team-accordion" open>
+        <summary>
+          <div class="team-head">
+            <span class="logo-box">
+              <img src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" class="logo" alt="Teg 1"/>
+            </span>
+            <span>Teg 1</span>
+          </div>
+        </summary>
+        <div class="team-body">
+          <div class="two-col">
+            <div>
+              <h3 class="subtitle">Spelare</h3>
+              <table><tbody>
+                <tr><td>Ludwig Nilsson</td></tr>
+                <tr><td>Adrian Holmström Widding</td></tr>
+                <tr><td>Noah Eirell</td></tr>
+                <tr><td>Hannes Risberg</td></tr>
+                <tr><td>Anton Jakobsson</td></tr>
+                <tr><td>Theo Högman</td></tr>
+              </tbody></table>
+            </div>
+            <div>
+              <h3 class="subtitle">Ledare</h3>
+              <table><tbody>
+                <tr><td>Lars Jakobsson</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- TEG 2 -->
+      <details class="team-accordion">
+        <summary>
+          <div class="team-head">
+            <span class="logo-box">
+              <img src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" class="logo" alt="Teg 2"/>
+            </span>
+            <span>Teg 2</span>
+          </div>
+        </summary>
+        <div class="team-body">
+          <div class="two-col">
+            <div>
+              <h3 class="subtitle">Spelare</h3>
+              <table><tbody>
+                <tr><td>Olle Berglund</td></tr>
+                <tr><td>Teodor Holmlund</td></tr>
+                <tr><td>Albin Östberg</td></tr>
+                <tr><td>Sixten Larsson</td></tr>
+                <tr><td>Benjamin Edlund Wallin</td></tr>
+                <tr><td>William Lundberg</td></tr>
+                <tr><td>Sander Röjestål</td></tr>
+              </tbody></table>
+            </div>
+            <div>
+              <h3 class="subtitle">Ledare</h3>
+              <table><tbody>
+                <tr><td>Andreas Wallin</td></tr>
+                <tr><td>Johan Holmlund</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- TEG 3 -->
+      <details class="team-accordion">
+        <summary>
+          <div class="team-head">
+            <span class="logo-box">
+              <img src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" class="logo" alt="Teg 3"/>
+            </span>
+            <span>Teg 3</span>
+          </div>
+        </summary>
+        <div class="team-body">
+          <div class="two-col">
+            <div>
+              <h3 class="subtitle">Spelare</h3>
+              <table><tbody>
+                <tr><td>Folke Bagger</td></tr>
+                <tr><td>Folke Bergström</td></tr>
+                <tr><td>Nils Fjellström</td></tr>
+                <tr><td>Ingemar Magnusson</td></tr>
+                <tr><td>Theo Hansskog</td></tr>
+                <tr><td>Anton Persson</td></tr>
+                <tr><td>Noah Hallberg</td></tr>
+              </tbody></table>
+            </div>
+            <div>
+              <h3 class="subtitle">Ledare</h3>
+              <table><tbody>
+                <tr><td>Patrik Bagger</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- TEG 4 -->
+      <details class="team-accordion">
+        <summary>
+          <div class="team-head">
+            <span class="logo-box">
+              <img src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" class="logo" alt="Teg 4"/>
+            </span>
+            <span>Teg 4</span>
+          </div>
+        </summary>
+        <div class="team-body">
+          <div class="two-col">
+            <div>
+              <h3 class="subtitle">Spelare</h3>
+              <table><tbody>
+                <tr><td>Melker Höber</td></tr>
+                <tr><td>Oliver Ulfhielm</td></tr>
+                <tr><td>Gustav Käck</td></tr>
+                <tr><td>Vilmer Leyonberg</td></tr>
+                <tr><td>Arwyn Dawis</td></tr>
+                <tr><td>Isac Eldskott</td></tr>
+                <tr><td>Walter Brodin</td></tr>
+              </tbody></table>
+            </div>
+            <div>
+              <h3 class="subtitle">Ledare</h3>
+              <table><tbody>
+                <tr><td>Andreas Ulfhielm</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- MÅLVAKTER – eget team-card -->
+      <details class="team-accordion">
+        <summary>
+          <div class="team-head">
+            <span class="logo-box">
+              <img src="https://files.eliteprospects.com/layout/logos/edba610c-6188-4b94-a5eb-78b94586c71d_large.png" class="logo" alt="Målvakter"/>
+            </span>
+            <span>Målvakter</span>
+          </div>
+        </summary>
+        <div class="team-body">
+          <h3 class="subtitle">Spelare</h3>
+          <table><tbody>
+            <tr><td>Anton Nybom</td></tr>
+            <tr><td>Hugo Helling</td></tr>
+            <tr><td>Knut Lekander</td></tr>
+            <tr><td>Milian Tiger</td></tr>
+          </tbody></table>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Se till att alla lagkort förblir öppna efter orienteringsbyte
+  window.addEventListener('orientationchange', function() {
+    const acc = document.querySelectorAll('details.team-accordion');
+    acc.forEach(function(d){ d.open = true; });
+  });
+</script>
+</body>
+</html>
